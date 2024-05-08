@@ -20,10 +20,10 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <a>Home</a>
+        <a href="/">Home</a>
       </li>
       <li>
-        <a>Course</a>
+        <a href="/course">Course</a>
       </li>
       <li>
         <a>Contact</a>
@@ -68,7 +68,7 @@ const Navbar = () => {
                 {navItems}
               </ul>
             </div>
-            <a className=" text-2xl font-bold cursor-pointer">BookStore</a>
+            <a href="/" className=" text-2xl font-bold cursor-pointer">BookStore</a>
           </div>
           <div className="navbar-end space-x-3">
             <div className="navbar-center hidden lg:flex">
