@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Login from "./Login";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(
@@ -7,17 +8,16 @@ const Navbar = () => {
 
   const element = document.documentElement;
   useEffect(() => {
-   if(theme ==="dark"){
-    element.classList.add("dark");
-    localStorage.setItem("theme","dark");
-    document.body.classList.add("dark");
-   }else{
-    element.classList.remove("dark");
-    localStorage.setItem("theme","light");
-    document.body.classList.remove("dark");
-   }
-  }, [theme])
-  
+    if (theme === "dark") {
+      element.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      document.body.classList.add("dark");
+    } else {
+      element.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      document.body.classList.remove("dark");
+    }
+  }, [theme]);
 
   const [sticky, setSticky] = useState(false);
   useEffect(() => {
@@ -33,7 +33,6 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
 
   const navItems = (
     <>
@@ -53,9 +52,13 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className={`max-w-screen-2xl container mx-auto md:px-20 px-4 dark:bg-slate-800 dark:text-white fixed top-0 left-0 right-0 z-50 ${
-        sticky ? "sticky-navbar shadow-md bg-base-200 dark:bg-slate-700 dark:text-white duration-300 transition-all ease-in-out" :""
-      }`}>
+      <div
+        className={`max-w-screen-2xl container mx-auto md:px-20 px-4 dark:bg-slate-800 dark:text-white fixed top-0 left-0 right-0 z-50 ${
+          sticky
+            ? "sticky-navbar shadow-md bg-base-200 dark:bg-slate-700 dark:text-white duration-300 transition-all ease-in-out"
+            : ""
+        }`}
+      >
         <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
@@ -86,7 +89,9 @@ const Navbar = () => {
                 {navItems}
               </ul>
             </div>
-            <a href="/" className=" text-2xl font-bold cursor-pointer">BookStore</a>
+            <a href="/" className=" text-2xl font-bold cursor-pointer">
+              BookStore
+            </a>
           </div>
           <div className="navbar-end space-x-3">
             <div className="navbar-center hidden lg:flex">
@@ -142,9 +147,11 @@ const Navbar = () => {
               </svg>
             </label>
             <div className="">
-              <a className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer">
+              <a className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
+              onClick={()=>document.getElementById("my_modal_3").showModal()}>
                 Login
               </a>
+              <Login/>
             </div>
           </div>
         </div>
