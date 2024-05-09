@@ -8,9 +8,11 @@ const Login = () => {
         <div className="modal-box">
           <form className="flex flex-col justify-center items-center" method="dialog">
             {/* if there is a button in form, it will close the modal */}
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            <Link to='/' className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            onClick={() => document.getElementById("my_modal_3").close()}
+            >
               ✕
-            </button>
+            </Link>
           
           <h3 className="font-bold text-xl">Login</h3>
           <div className="mt-4 space-y-2">
