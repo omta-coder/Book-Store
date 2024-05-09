@@ -31,7 +31,7 @@ const Banner = () => {
           </div>
           <button className="btn mt-6 btn-secondary">Get Started</button>
         </div>
-        <div className="order-1 w-full mt-20 md:w-1/2">
+        <div className="order-1 w-full flex items-center justify-center mt-20 md:w-1/2">
           <img src={banner} className="md:w-[530px] md-h-[460px] md:ml-12" alt="" />
         </div>
       </div>
