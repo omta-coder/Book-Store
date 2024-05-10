@@ -1,14 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form" 
 import Login from "./Login";
 
 const Signup = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data) => console.log(data)
   return (
     <>
       <div className=" flex h-screen items-center justify-center">
         <div className="w-[600px]">
           <div className="modal-box">
             <form
+              onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col justify-center items-center"
               method="dialog"
             >
@@ -25,7 +34,10 @@ const Signup = () => {
                   type="text"
                   placeholder="Enter Your Fullname"
                   className="w-80 px-3 py-1 rounded-md outline-none"
-                />
+                  {...register("name", { required: true })} 
+                  />
+                  <br />
+                  {errors.name && <span className="text-sm text-red-500">This field is required</span>}
               </div>
               <div className="mt-4 space-y-2">
                 <span>Email</span>
@@ -34,7 +46,10 @@ const Signup = () => {
                   type="email"
                   placeholder="Enter Your Email"
                   className="w-80 px-3 py-1 rounded-md outline-none"
-                />
+                  {...register("email", { required: true })} 
+                  />
+                  <br />
+                  {errors.email && <span className="text-sm text-red-500">This field is required</span>}
               </div>
               <div className="mt-4 space-y-2">
                 <span>Password</span>
@@ -43,7 +58,10 @@ const Signup = () => {
                   type="password"
                   placeholder="Enter Your Password"
                   className="w-80 px-3 py-1 rounded-md outline-none"
-                />
+               {...register("password", { required: true })} 
+            />
+            <br />
+            {errors.password && <span className="text-sm text-red-500">This field is required</span>}
               </div>
               <div className="flex items-center justify-around mt-6">
                 <button className="text-start bg-pink-500 mx-5 text-white px-4 py-1 rounded-md hover:bg-pink-700 duration-200">

@@ -1,12 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form" 
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data) => console.log(data)
   return (
     <div>
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
-          <form className="flex flex-col justify-center items-center" method="dialog">
+          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center items-center" method="dialog">
             {/* if there is a button in form, it will close the modal */}
             <Link to='/' className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
             onClick={() => document.getElementById("my_modal_3").close()}
@@ -22,7 +30,10 @@ const Login = () => {
               type="email"
               placeholder="Enter Your Email"
               className="w-80 px-3 py-1 rounded-md outline-none"
+              {...register("email", { required: true })} 
             />
+            <br />
+            {errors.email && <span className="text-sm text-red-500">This field is required</span>}
           </div>
           <div className="mt-4 space-y-2">
             <span>Password</span>
@@ -31,7 +42,10 @@ const Login = () => {
               type="password"
               placeholder="Enter Your Password"
               className="w-80 px-3 py-1 rounded-md outline-none"
+              {...register("password", { required: true })} 
             />
+            <br />
+            {errors.password && <span className="text-sm text-red-500">This field is required</span>}
           </div>
           <div className="flex items-center justify-around mt-6">
             <button className="text-start bg-pink-500 mx-5 text-white px-7 py-1 rounded-md hover:bg-pink-700 duration-200">
