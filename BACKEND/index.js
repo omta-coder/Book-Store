@@ -2,6 +2,7 @@ import express from 'express'
 import 'dotenv/config';
 import mongoose from 'mongoose';
 import bookRoute from './routes/bookRoute.js'
+import userRoute from './routes/userRoute.js'
 import cors from 'cors'
 
 const PORT = process.env.PORT || 3001;
@@ -16,6 +17,7 @@ mongoose.connect(process.env.MONGODB)
 
 //defining routes
 app.use('/book', bookRoute);
+app.use('/user', userRoute);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
