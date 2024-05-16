@@ -12,8 +12,12 @@ const Logout = () => {
         })
         localStorage.removeItem("BookUsers");
         toast.success("Logout Successfully!")
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
     } catch (error) {
         toast.error("Error: " + error)
+        setTimeout(() => {}, 2000);
     }
   };
   return (
